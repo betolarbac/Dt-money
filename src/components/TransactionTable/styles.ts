@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+//estilização de tabelas 
 export const Container = styled.div `
     margin-top: 4rem;
 
@@ -22,14 +23,16 @@ export const Container = styled.div `
             color: var(--text-body);
             border-radius: 0.25rem;
 
+            //coloração de primeiro filho de texto
             &:first-child {
                 color: var(--text-title);
             }
 
+            //coloração de verde 
             &.deposit {
                 color: var(--green)
             }
-
+            //coloração de vermelho
             &.withdraw {
                 color: var(--red)
             }

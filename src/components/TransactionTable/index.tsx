@@ -1,13 +1,13 @@
-import { useEffect } from "react";
-import { api } from "../../services/api";
+import { useContext, } from "react";
+import { TransactionsContext } from "../../TransactionsContext";
 import { Container } from "./styles";
 
 
+
+
 export function TransactionTable() {
-useEffect(() => {
-    api.get('/transactions')
-    .then(response => console.log(response.data))
-},[]);
+    const { transactions }= useContext(TransactionsContext);
+
 
     //tabelas 
     return (
@@ -23,19 +23,28 @@ useEffect(() => {
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td> desenvolvimento</td>
-                        <td  className="deposit">R$1000</td>
-                        <td>Desenvolvimento</td>
-                        <td>02/12/2021</td>
-                    </tr>
+                    {transactions.map(transaction => (
+                        
+                        <tr key={transaction.id}>
+                            <td>{transaction.title}</td>
+                            <td  className={transaction.type}>
+                                
+                                {//Intl formatação de moedas e datas api nativa de browser
+                                new Intl.NumberFormat('pt-BR',{
+                                    style: 'currency',
+                                    currency: 'BRL',
+                                }).format(transaction.amount)}
+                            </td>
+                            <td>{transaction.category}</td>
+                            <td>
+                            {new Intl.DateTimeFormat('pt-BR',).format(
+                                new Date(transaction.createdAt)
+                            )}
+                            </td>
+                        </tr>
+                        
+                    ))}
 
-                    <tr>
-                        <td>desenvolvimento</td>
-                        <td className="withdraw">-R$500</td>
-                        <td>Desenvolvimento</td>
-                        <td>02/12/2021</td>
-                    </tr>
 
                 </tbody>
             </table>

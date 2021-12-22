@@ -34,7 +34,7 @@ $ yarn
 # Run Aplication
 $ yarn start
 ```
-Go to http://localhost:3000/ to see the result.
+resultado http://localhost:3000/ onde estara a aplicação
 
 
 

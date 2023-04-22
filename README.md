@@ -34,8 +34,6 @@ $ yarn
 # Run Aplication
 $ yarn start
 ```
-resultado http://localhost:3000/ onde estara a aplicação
-
 
 
 # :sparkles: Contribuição
